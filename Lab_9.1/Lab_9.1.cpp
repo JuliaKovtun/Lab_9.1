@@ -27,13 +27,13 @@ struct Student
 void Print(Student* p, const int N);
 void Create(Student* p, const int N);
 void LineSearch(Student* p, const int N);
-int PhysicsSearch(Student* p, const int N);
+void PhysicsSearch(Student* p, const int N, int& k);
 
 int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-
+	int k;
 	int N;
 	cout << "Введіть N: "; cin >> N;
 
@@ -41,8 +41,8 @@ int main()
 	Create(p, N);
 	Print(p, N);
 	LineSearch(p, N);
-
-	cout << endl << "Кількість студентів, які отрималт 5 з фізики: " << PhysicsSearch(p, N) << endl;
+	PhysicsSearch(p, N, k);
+	cout << endl << "Кількість студентів, які отрималт 5 з фізики: " << k << endl;
 
 	return 0;
 }
@@ -159,13 +159,13 @@ void LineSearch(Student* p, const int N)
 	}
 }
 
-int PhysicsSearch(Student* p, const int N)
+void PhysicsSearch(Student* p, const int N, int &k)
 {
-	int k = 0;
+	k = 0;
 	for (int i = 0; i < N; i++)
 	{
 		if (p[i].physics == 5)
 			k++;
 	}
-	return k;
+	
 }
